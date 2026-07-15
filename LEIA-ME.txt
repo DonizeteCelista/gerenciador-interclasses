@@ -1,0 +1,41 @@
+GERENCIADOR DE INTERCLASSES — VERSÃO 1.0 FINAL
+
+ÚLTIMOS AJUSTES
+- Assistente inteligente sugere o formato conforme a quantidade de participantes.
+- Até 5 participantes: sugestão de 1 grupo.
+- De 6 a 11 participantes: sugestão de 2 grupos.
+- A partir de 12 participantes: sugestão de 4 grupos.
+- O professor continua livre para escolher manualmente.
+- Dashboard resumido para o aluno.
+- Botão para instalar como aplicativo quando o navegador permitir.
+- Confirmação dupla antes de excluir campeonatos.
+- Mensagens e telas vazias mais claras.
+- Mantido o nome oficial Gerenciador de Interclasses 1.0.
+
+RECOMENDAÇÃO PARA O PRIMEIRO USO
+1. Crie uma escola de teste.
+2. Crie um campeonato pequeno com 1 grupo.
+3. Crie outro com 2 grupos.
+4. Teste um campeonato com 4 grupos.
+5. Registre resultados, empate com pênaltis e disputa de terceiro lugar.
+6. Abra o link em um celular para conferir a área do aluno.
+
+Esta versão está pronta para testes reais como site/PWA.
+A geração do APK/AAB e a publicação na Play Store são a próxima etapa.
+
+
+CORREÇÃO FINAL — LANÇAMENTO DE RESULTADOS
+
+- Cada partida em Próximos Jogos agora possui o botão “Lançar resultado”.
+- O card inteiro também pode ser clicado pelo professor.
+- Em Resultados aparece o botão “Editar resultado”.
+- Removidos “Sem data definida”, horário e local da listagem principal.
+- Removido o botão Agenda do topo da competição.
+- Ao salvar, o jogo sai de Próximos Jogos e vai automaticamente para Resultados.
+
+
+CORREÇÃO DO PAINEL DE RESULTADOS
+- Corrigido o erro que impedia a abertura da tela de placar.
+- O botão “Lançar resultado” e o card completo agora abrem o painel.
+- Times voltaram a aparecer lado a lado: TIME A × TIME B.
+- Resultados existentes podem ser abertos pelo botão “Editar resultado”.
