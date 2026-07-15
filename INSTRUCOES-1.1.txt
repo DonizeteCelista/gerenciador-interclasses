@@ -1,0 +1,4 @@
+GERENCIADOR DE INTERCLASSES 1.1
+
+No GitHub, substitua: index.html, manifest.json, sw.js, icon.svg e .nojekyll.
+A nova ordem por rodadas vale para campeonatos novos ou após usar Reorganizar.
