@@ -1,0 +1,44 @@
+GERENCIADOR DE INTERCLASSES — PROJETO ORGANIZADO
+
+ESTRUTURA
+
+index.html
+css/
+  style.css
+js/
+  app.js
+assets/
+  icon.svg
+manifest.json
+sw.js
+.nojekyll
+
+O QUE FOI FEITO
+
+- O aplicativo funcional foi mantido.
+- O CSS deixou de ficar misturado dentro do index.html.
+- O JavaScript deixou de ficar misturado dentro do index.html.
+- Os arquivos agora estão separados e fáceis de corrigir.
+- Foi adicionada uma correção segura para a barra de notificações e a área inferior do celular.
+- A chave Pix permanece: donizetecelista@gmail.com.
+
+COMO PUBLICAR NO GITHUB
+
+1. Apague os arquivos atuais do repositório gerenciador-interclasses.
+2. Envie TODO o conteúdo desta pasta, incluindo:
+   css
+   js
+   assets
+   index.html
+   manifest.json
+   sw.js
+   .nojekyll
+3. Faça o commit.
+4. Espere o GitHub Pages ficar verde.
+5. Abra o site em janela anônima ou use Ctrl + F5.
+
+IMPORTANTE
+
+Esta entrega prioriza organizar e estabilizar o código.
+As alterações maiores da versão 1.1 serão aplicadas agora sobre esta estrutura,
+uma por vez, evitando que o CSS apareça como texto novamente.
