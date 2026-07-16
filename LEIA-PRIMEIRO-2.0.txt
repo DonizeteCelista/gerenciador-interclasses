@@ -1,0 +1,50 @@
+GERENCIADOR DE INTERCLASSES 2.0
+
+PACOTE PRONTO PARA GITHUB PAGES
+
+ESTRUTURA
+index.html
+css/style.css
+js/app.js
+assets/icon.svg
+manifest.json
+sw.js
+.nojekyll
+
+CORREÇÕES IMPORTANTES
+- Projeto organizado em pastas fixas.
+- CSS e JavaScript testados por servidor HTTP local.
+- Avanço das regras do Vôlei corrigido.
+- Set único não exige tie-break.
+- Melhor de 3 e melhor de 5 validam o tie-break.
+- Função correta da fase de grupos confirmada.
+- Login persistente do professor mantido.
+- QR Code único por escola mantido.
+- Abertura administrativa das competições mantida.
+- Cache atualizado para a versão 2.0.
+
+COMO PUBLICAR
+
+1. Abra o repositório gerenciador-interclasses.
+2. Apague os arquivos e pastas antigos do site.
+3. Extraia este ZIP.
+4. Envie O CONTEÚDO da pasta Gerenciador-Interclasses-2.0:
+   - css
+   - js
+   - assets
+   - index.html
+   - manifest.json
+   - sw.js
+   - .nojekyll
+5. Não envie apenas a pasta externa.
+6. Faça o commit.
+7. Aguarde o GitHub Pages ficar verde.
+8. Abra o site em janela anônima ou use Ctrl + F5.
+
+TESTE RÁPIDO
+- Abrir a tela inicial e confirmar o visual.
+- Criar Vôlei com 1 set.
+- Criar Vôlei melhor de 3.
+- Abrir uma competição pelo botão Jogos como administrador.
+- Fechar e abrir o painel para confirmar o login persistente.
+- Escanear o QR da escola em outro celular.
