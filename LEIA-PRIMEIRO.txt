@@ -1,0 +1,34 @@
+GERENCIADOR DE INTERCLASSES 2.0 — BASE DE TESTE
+
+Esta versão voltou exatamente para a última base que estava funcionando
+antes das alterações da artilharia.
+
+NÃO contém as mudanças recentes de:
+- preservar autores ao alterar o placar;
+- nova tabela de artilheiros;
+- zerar a artilharia ao reorganizar.
+
+O objetivo deste pacote é confirmar novamente o funcionamento básico:
+1. criar competição;
+2. abrir pelo botão Jogos;
+3. visualizar Próximos;
+4. lançar e salvar resultados;
+5. atualizar classificação e eliminatórias.
+
+COMO COLOCAR NO GITHUB
+
+1. Apague os arquivos atuais do repositório.
+2. Envie somente estes arquivos:
+   .nojekyll
+   index.html
+   style.css
+   app.js
+   icon.svg
+   manifest.json
+   sw.js
+3. Faça o commit.
+4. Aguarde o GitHub Pages ficar verde.
+5. Abra em janela anônima ou pressione Ctrl + F5.
+
+IMPORTANTE
+Não envie a pasta externa. Envie os arquivos que estão dentro dela.

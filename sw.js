@@ -1,4 +1,4 @@
-const CACHE = "gerenciador-interclasses-2.0-revisao-geral-v6";
+const CACHE = "gerenciador-interclasses-2.0-base-teste-limpa";
 const FILES = [
   "./",
   "./index.html",
