@@ -1,0 +1,181 @@
+GERENCIADOR DE INTERCLASSES — PROJETO ORGANIZADO
+
+ESTRUTURA
+
+index.html
+css/
+  style.css
+js/
+  app.js
+assets/
+  icon.svg
+manifest.json
+sw.js
+.nojekyll
+
+O QUE FOI FEITO
+
+- O aplicativo funcional foi mantido.
+- O CSS deixou de ficar misturado dentro do index.html.
+- O JavaScript deixou de ficar misturado dentro do index.html.
+- Os arquivos agora estão separados e fáceis de corrigir.
+- Foi adicionada uma correção segura para a barra de notificações e a área inferior do celular.
+- A chave Pix permanece: donizetecelista@gmail.com.
+
+COMO PUBLICAR NO GITHUB
+
+1. Apague os arquivos atuais do repositório gerenciador-interclasses.
+2. Envie TODO o conteúdo desta pasta, incluindo:
+   css
+   js
+   assets
+   index.html
+   manifest.json
+   sw.js
+   .nojekyll
+3. Faça o commit.
+4. Espere o GitHub Pages ficar verde.
+5. Abra o site em janela anônima ou use Ctrl + F5.
+
+IMPORTANTE
+
+Esta entrega prioriza organizar e estabilizar o código.
+As alterações maiores da versão 1.1 serão aplicadas agora sobre esta estrutura,
+uma por vez, evitando que o CSS apareça como texto novamente.
+
+
+ALTERAÇÃO ATUAL — TELA INICIAL COMPACTA
+
+- Somente a tela inicial foi alterada.
+- Troféu, título e texto ficaram menores.
+- Busca permanece com campo e botão lado a lado no celular.
+- Botão Criar nova escola ficou mais compacto.
+- Área Apoie o desenvolvedor ocupa menos espaço.
+- Pix e botão Copiar Pix permanecem visíveis.
+- Nenhuma lógica do aplicativo foi alterada.
+
+
+ALTERAÇÃO ATUAL — TELA DA ESCOLA
+
+- Busca de escola por qualquer palavra ou parte do nome.
+- Busca ignora acentos e diferenças entre maiúsculas/minúsculas.
+- Removido o botão de mudança de tema.
+- Barra superior afastada da barra de notificações.
+- Botão Voltar redesenhado.
+- Cabeçalho da escola mais compacto.
+- Turnos menores e organizados em duas colunas.
+- QR Code virou um botão que abre uma janela.
+- Download gera um cartaz vertical pronto para impressão.
+- Instalar, Sou professor e Trocar escola ficam visíveis em grade compacta.
+- Nenhuma regra dos campeonatos foi alterada.
+
+
+ALTERAÇÃO ATUAL — PAINEL E EDITOR DE RESULTADOS
+
+PAINEL ADMINISTRATIVO
+- Campeonatos separados por Matutino, Vespertino, Noturno e Outro.
+- Cada turno possui seu próprio título e quantidade de campeonatos.
+- Cards e botões mais compactos no celular.
+
+EDITOR DE RESULTADOS
+- Data, horário e local ficam ocultos por padrão.
+- Botão opcional abre ou fecha esses campos.
+- Se o jogo já possuir alguma dessas informações, os campos abrem automaticamente.
+- Nome de cada time fica acima do placar correspondente.
+- Controles - 0 + permanecem diretamente abaixo do nome.
+- Botão Inverter lados ficou menor.
+- Cabeçalho e formulário ficaram mais compactos.
+
+
+ALTERAÇÃO ATUAL — FORMATO DA COMPETIÇÃO
+
+- Quadro de sugestão removido.
+- Tela de formato mais compacta.
+- Opções Grupos e Eliminatórias aparecem lado a lado.
+- Selecionar Eliminatórias não avança automaticamente.
+- É possível trocar livremente entre os dois formatos.
+- Botão Avançar separado para Eliminatórias.
+- Configurações de grupos só aparecem quando Grupos é selecionado.
+- Criado um padrão visual mais compacto para as demais telas.
+
+
+ALTERAÇÃO ATUAL — RESULTADOS E PÊNALTIS
+
+- Aba Resultados permanece visível mesmo antes do primeiro resultado.
+- Quando não houver resultados, mostra “Nenhum resultado registrado”.
+- Depois de salvar um resultado, a tela da competição é atualizada imediatamente.
+- Empates em jogos eliminatórios com placar simples exibem a decisão por pênaltis.
+- Professor seleciona o vencedor e informa o placar dos pênaltis.
+- O aplicativo valida se o vencedor escolhido corresponde ao placar.
+- Pênaltis aparecem nos Resultados e no chaveamento.
+
+
+ALTERAÇÃO ATUAL — PRÓXIMOS JOGOS E CHAVEAMENTO
+
+PRÓXIMOS JOGOS
+- Exibe todos os jogos ainda não encerrados.
+- Inclui jogos futuros com “A definir”.
+- Jogos ainda bloqueados aparecem para organização dos alunos.
+- O professor só consegue lançar resultado quando a fase estiver liberada.
+- Jogos futuros mostram “Aguardando classificados” ou “Aguardando fase anterior”.
+
+FASE DE GRUPOS
+- Jogos são gerados por rodadas.
+- Em 2 ou 4 grupos, os confrontos são alternados entre os grupos.
+- A ordem tenta evitar que o mesmo time apareça em partidas consecutivas.
+- Para aplicar a nova ordem em competição já criada, use Reorganizar.
+
+ELIMINATÓRIAS
+- Colunas menores.
+- Cards, textos e espaçamentos compactados.
+- Melhor aproveitamento da largura do celular.
+- Rolagem horizontal mantida quando houver muitas fases.
+
+
+ALTERAÇÃO ATUAL — ELIMINATÓRIAS E ABERTURA DA COMPETIÇÃO
+
+- Corrigido o erro que fazia times avançarem antes do adversário ser definido.
+- Jogos parcialmente preenchidos não são mais encerrados automaticamente.
+- Não são mais criados resultados automáticos.
+- Classificações diretas antigas deixam de aparecer na aba Resultados.
+- Classificações diretas antigas aparecem no chaveamento como “Avança sem disputar partida”.
+- Aba Estatísticas removida.
+- Botão Jogos passou a abrir a competição com validação dos dados.
+- Corrigida uma possível falha ao abrir competições com grupos + eliminatórias.
+- QR da competição não impede mais a abertura caso algum elemento esteja indisponível.
+
+IMPORTANTE
+Para limpar completamente estruturas que já receberam avanços automáticos incorretos,
+use o botão Reorganizar na competição. Isso apaga os resultados e recria o chaveamento.
+
+
+ALTERAÇÃO ATUAL — LOGIN PERSISTENTE E QR ÚNICO
+
+LOGIN DO PROFESSOR
+- Após digitar a senha corretamente, o aparelho fica logado naquela escola.
+- Ao sair do painel e entrar novamente, não pede a senha.
+- Ao fechar e abrir o site/aplicativo, continua logado.
+- Se a senha da escola for alterada, a sessão é atualizada.
+- O botão passa a mostrar “Abrir painel” quando o aparelho já está autorizado.
+- A autorização fica salva separadamente para cada escola.
+
+QR CODE
+- Removido o QR Code individual de cada competição.
+- Cada escola possui somente um QR Code.
+- O QR leva diretamente à página pública da escola.
+- O link não contém mais o parâmetro de campeonato.
+- O QR gerado localmente também aponta para o endereço público do GitHub.
+
+
+CORREÇÃO — BOTÃO JOGOS NO PAINEL ADMINISTRATIVO
+
+- Corrigido o erro que acontecia apenas ao abrir uma competição como administrador.
+- A versão anterior voltou a chamar uma função inexistente: groupsAreComplete().
+- A função correta é groupStageComplete().
+- O botão Jogos continua abrindo a competição em modo administrativo.
+- O cache foi atualizado para impedir o carregamento do JavaScript antigo.
+
+Depois de publicar:
+1. Aguarde o GitHub Pages ficar verde.
+2. Abra com Ctrl + F5.
+3. No celular, feche completamente o site/app e abra novamente.

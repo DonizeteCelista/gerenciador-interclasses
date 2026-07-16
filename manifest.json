@@ -1,0 +1,20 @@
+{
+  "name": "Gerenciador de Interclasses",
+  "short_name": "Interclasses",
+  "description": "Gerenciamento de jogos escolares, resultados, classificações e eliminatórias.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f1f5f9",
+  "theme_color": "#173b7a",
+  "orientation": "portrait",
+  "version": "1.0.0",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
