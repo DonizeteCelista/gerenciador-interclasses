@@ -1,0 +1,22 @@
+GERENCIADOR DE INTERCLASSES 2.0 — VERSÃO ESTÁVEL
+
+CORREÇÕES
+- Botão Jogos abre a competição como administrador.
+- Abertura possui fallback: uma falha secundária não bloqueia a tela.
+- Autores dos gols são preservados ao alterar o placar.
+- Artilharia mostra apenas jogadores com pelo menos 1 gol.
+- Empates usam posições 1º, 1º, 3º.
+- Quantidade de jogadores fica abaixo do nome do time.
+- Reorganizar/refazer zera os gols e a artilharia.
+
+ATUALIZAÇÃO NO GITHUB
+Apague os arquivos atuais e envie:
+.nojekyll
+index.html
+style.css
+app.js
+icon.svg
+manifest.json
+sw.js
+
+Depois faça o commit, aguarde o Pages ficar verde e abra com Ctrl + F5.
