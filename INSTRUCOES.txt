@@ -1,0 +1,36 @@
+GERENCIADOR DE INTERCLASSES 2.0 — GITHUB SEM PASTAS
+
+O problema da tela sem estilo aconteceu porque o GitHub não encontrou:
+css/style.css
+js/app.js
+assets/icon.svg
+
+Nesta versão, TODOS os arquivos ficam na raiz do repositório.
+
+APAGUE NO GITHUB:
+- index.html
+- manifest.json
+- sw.js
+- style.css
+- app.js
+- icon.svg
+- as pastas css, js e assets, caso existam
+
+DEPOIS ENVIE ESTES ARQUIVOS:
+- .nojekyll
+- index.html
+- style.css
+- app.js
+- icon.svg
+- manifest.json
+- sw.js
+
+Não envie a pasta externa. Envie os arquivos que estão dentro dela.
+
+Depois:
+1. Faça o commit.
+2. Aguarde o GitHub Pages ficar verde.
+3. Abra o site em uma janela anônima.
+4. Ou pressione Ctrl + F5.
+
+A página deve abrir com o visual azul normal.
