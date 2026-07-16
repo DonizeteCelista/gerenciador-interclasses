@@ -1,0 +1,37 @@
+GERENCIADOR DE INTERCLASSES 2.0
+
+NOVIDADES
+
+1. AUTORES DOS GOLS DURANTE A PARTIDA
+- Ao aumentar o placar, os jogadores já selecionados permanecem.
+- O novo gol cria somente um campo novo.
+- Ao reabrir uma partida salva, os autores aparecem novamente.
+- Funciona no Futsal e Handebol.
+
+2. CLASSIFICAÇÃO AO VIVO
+- Botão “Salvar andamento” atualiza o Firebase sem encerrar a partida.
+- A classificação considera provisoriamente o placar atual.
+- Alunos veem a atualização em tempo real.
+- A tabela mostra somente P, J, SG e GP.
+- Uma faixa informa quando a classificação é provisória.
+
+3. FINALIZAR PARTIDA
+- Somente “Finalizar partida” confirma o resultado.
+- Apenas a finalização libera classificados e fases seguintes.
+- Pênaltis eliminatórios são confirmados somente na finalização.
+
+4. PRÓXIMOS JOGOS
+- Partida em andamento mostra o placar e o selo AO VIVO.
+- O botão passa a dizer “Atualizar placar”.
+
+COMO PUBLICAR NO GITHUB
+Substitua os arquivos atuais por:
+.nojekyll
+index.html
+style.css
+app.js
+icon.svg
+manifest.json
+sw.js
+
+Depois faça o commit, aguarde o Pages ficar verde e use Ctrl + F5.
