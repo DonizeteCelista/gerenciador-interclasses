@@ -1,0 +1,31 @@
+GERENCIADOR DE INTERCLASSES 2.0 — REVISÃO GERAL
+
+CORREÇÃO PRINCIPAL
+- O salvamento do placar não fica mais carregando indefinidamente.
+- O salvamento possui limite de 15 segundos.
+- Em internet lenta, o carregamento é encerrado e aparece uma mensagem clara.
+- Cliques duplicados no botão Salvar são bloqueados.
+- Os botões são reativados mesmo quando ocorre erro.
+
+OUTRAS VERIFICAÇÕES
+- Abertura do editor de resultado protegida.
+- Placar normal, sets, WO e pênaltis revisados.
+- Autores dos gols preservados ao alterar o placar.
+- Futsal e Handebol salvam autores dos gols.
+- Artilharia é recalculada após o salvamento.
+- Vencedores avançam para a fase seguinte.
+- Perdedor da semifinal avança para a disputa de 3º lugar.
+- Tela da competição é atualizada após salvar.
+- Funções principais e elementos HTML foram verificados.
+
+ATUALIZAÇÃO
+Substitua no GitHub:
+.nojekyll
+index.html
+style.css
+app.js
+icon.svg
+manifest.json
+sw.js
+
+Depois aguarde o Pages ficar verde e use Ctrl + F5.
