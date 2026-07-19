@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#173b7a">
+  <title>Gerenciador de Interclasses 2.0</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+  <header class="topbar">
+    <button id="btnVoltar" class="icon-btn hidden" aria-label="Voltar">←</button>
+    <div class="topbar-text">
+      <strong id="topTitle">Gerenciador de Interclasses</strong>
+      <small id="topSubtitle">Jogos escolares organizados em um só lugar</small>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section id="telaBusca" class="screen active">
+      <div class="hero">
+        <div class="hero-icon">🏆</div>
+        <h1>Encontre sua escola</h1>
+        <p>Pesquise pelo nome para acompanhar jogos, resultados e classificações.</p>
+      </div>
+
+      <div class="card">
+        <label for="campoBusca">Nome da escola</label>
+        <div class="search-row">
+          <input id="campoBusca" type="search" placeholder="Ex.: EEB Daniela Pereira">
+          <button id="btnBuscar">Buscar</button>
+        </div>
+        <p class="helper">Digite pelo menos 2 letras.</p>
+      </div>
+
+      <div id="resultadosBusca" class="stack"></div>
+      <button id="btnAbrirCadastro" class="secondary full">＋ Criar nova escola</button>
+
+      <div class="support-card">
+        <div class="support-icon">💙</div>
+        <div>
+          <h3>Apoie o desenvolvedor</h3>
+          <p>Criado de professor para professor. Se o aplicativo ajudou a organizar seus jogos, você pode apoiar o projeto com qualquer valor via Pix.</p>
+          <div class="pix-box">
+            <span id="pixEmail">donizetecelista@gmail.com</span>
+            <button id="btnCopiarPix" class="secondary">Copiar Pix</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="telaCadastro" class="screen">
+      <div class="card">
+        <h2>Criar nova escola</h2>
+        <p class="muted">Vários professores poderão usar a mesma senha administrativa.</p>
+
+        <label for="nomeEscola">Nome da escola</label>
+        <input id="nomeEscola" maxlength="100" placeholder="Nome completo da escola">
+
+        <label for="emailProfessor">E-mail do responsável</label>
+        <input id="emailProfessor" type="email" maxlength="120" placeholder="professor@escola.com">
+
+        <label for="senhaEscola">Senha administrativa</label>
+        <input id="senhaEscola" type="password" minlength="6" maxlength="40" placeholder="Mínimo de 6 caracteres">
+
+        <label for="confirmarSenha">Confirmar senha</label>
+        <input id="confirmarSenha" type="password" minlength="6" maxlength="40" placeholder="Digite novamente">
+
+        <div class="notice">Compartilhe essa senha apenas com os professores responsáveis. Ela não será exibida no Firebase, apenas o hash.</div>
+
+        <button id="btnCriarEscola" class="full">Criar escola</button>
+        <button id="btnCancelarCadastro" class="ghost full">Voltar</button>
+      </div>
+    </section>
+
+    <section id="telaEscola" class="screen">
+      <div class="card school-header school-header-compact">
+        <span class="school-emoji">🏫</span>
+        <div>
+          <h2 id="nomeEscolaAtual">Escola</h2>
+          <p class="muted">Escolha o período.</p>
+        </div>
+      </div>
+
+      <div class="card school-search-card">
+        <label for="buscaCompeticaoAluno">Pesquisar competição</label>
+        <input id="buscaCompeticaoAluno" type="search" placeholder="Esporte, modalidade ou turno">
+        <div id="favoritosAluno" class="stack"></div>
+      </div>
+
+      <div id="turnosAluno" class="school-turns-grid"></div>
+
+      <div class="school-actions-grid">
+        <button id="btnAbrirQREscola" class="secondary">▦ QR da escola</button>
+        <button id="btnInstalarApp" class="ghost hidden">📲 Instalar</button>
+        <button id="btnProfessor" class="teacher">👨‍🏫 Sou professor</button>
+        <button id="btnTrocarEscola" class="ghost">⇄ Trocar escola</button>
+      </div>
+    </section>
+
+    <section id="telaLogin" class="screen">
+      <div class="card">
+        <h2>Área do professor</h2>
+        <p class="muted">Qualquer professor que conheça a senha desta escola poderá administrar os campeonatos.</p>
+        <label for="senhaLogin">Senha</label>
+        <input id="senhaLogin" type="password" placeholder="Senha administrativa">
+        <button id="btnEntrarProfessor" class="full">Avançar</button>
+        <button id="btnCancelarLogin" class="ghost full">Voltar</button>
+      </div>
+    </section>
+
+    <section id="telaProfessor" class="screen">
+      <div class="card">
+        <h2>Painel administrativo</h2>
+        <p id="escolaPainel" class="muted"></p>
+      </div>
+
+      <button id="btnNovoCampeonato" class="primary-action full">＋ Criar campeonato</button>
+      <button id="btnConfiguracoesEscola" class="ghost full">⚙️ Configurações da escola</button>
+
+      <div class="section-title">
+        <h3>Campeonatos criados</h3>
+        <small>Gerencie jogos, resultados e publicação.</small>
+      </div>
+
+      <div id="listaCampeonatosAdmin" class="stack"></div>
+      <button id="btnSairPainel" class="ghost full">Sair do painel</button>
+    </section>
+
+    <section id="telaTurno" class="screen">
+      <div class="step-header"><span>Etapa 1 de 7</span><h2>Escolha o turno</h2><p>Selecione quando os jogos acontecerão.</p></div>
+      <div id="opcoesTurno" class="grid"></div>
+    </section>
+
+    <section id="telaEsporte" class="screen">
+      <div class="step-header"><span>Etapa 2 de 7</span><h2>Escolha o esporte</h2><p>Selecione uma opção ou crie um esporte personalizado.</p></div>
+      <div id="opcoesEsporte" class="grid"></div>
+      <div id="boxEsporteCustom" class="card hidden">
+        <label for="nomeEsporteCustom">Nome do esporte</label>
+        <input id="nomeEsporteCustom" placeholder="Ex.: Xadrez">
+        <button id="btnConfirmarEsporteCustom" class="full">Continuar</button>
+      </div>
+    </section>
+
+    <section id="telaModalidade" class="screen">
+      <div class="step-header"><span>Etapa 3 de 7</span><h2>Escolha a modalidade</h2><p>Defina a categoria do campeonato.</p></div>
+      <div id="opcoesModalidade" class="grid"></div>
+    </section>
+
+    <section id="telaParticipantes" class="screen">
+      <div class="step-header"><span>Etapa 4 de 7</span><h2 id="tituloParticipantes">Adicionar times</h2><p id="textoParticipantes">Cadastre todos os participantes.</p></div>
+      <div class="card">
+        <label id="labelParticipante" for="nomeParticipante">Nome do time</label>
+        <div class="search-row">
+          <input id="nomeParticipante" placeholder="Ex.: 3º Ano A">
+          <button id="btnAdicionarParticipante">Adicionar</button>
+        </div>
+      </div>
+      <div id="listaParticipantes" class="stack"></div>
+      <button id="btnAvancarRegras" class="full">Avançar</button>
+    </section>
+
+    <section id="telaJogadores" class="screen">
+      <div class="step-header"><span>Jogadores do time</span><h2 id="tituloTimeJogadores">Time</h2><p>Adicione jogadores para registrar artilharia.</p></div>
+      <div class="card">
+        <label for="nomeJogador">Nome do jogador</label>
+        <div class="search-row">
+          <input id="nomeJogador" placeholder="Nome do jogador">
+          <button id="btnAdicionarJogador">Adicionar</button>
+        </div>
+      </div>
+      <div id="listaJogadores" class="stack"></div>
+      <button id="btnConcluirJogadores" class="full">Concluir</button>
+    </section>
+
+    <section id="telaRegras" class="screen">
+      <div class="step-header"><span>Etapa 5 de 7</span><h2>Regras da partida</h2><p id="textoRegraAutomatica">O sistema definiu automaticamente a regra correta para este esporte.</p></div>
+      <div class="card">
+        <div id="regraAutomaticaResumo" class="notice"></div>
+
+        <div id="boxTipoPlacarCustom" class="hidden">
+          <label for="tipoPlacar">Como o resultado será registrado?</label>
+          <select id="tipoPlacar">
+            <option value="pontos">Pontos ou gols</option>
+            <option value="sets">Sets</option>
+          </select>
+        </div>
+
+        <div id="boxSets">
+          <label for="formatoSets">Formato dos sets</label>
+          <select id="formatoSets">
+            <option value="unico">1 set único</option>
+            <option value="melhor3">Melhor de 3 sets</option>
+            <option value="melhor5">Melhor de 5 sets</option>
+          </select>
+
+          <label for="pontosSetNormal">Pontos do set normal</label>
+          <select id="pontosSetNormal">
+            <option value="15">15 pontos</option>
+            <option value="21">21 pontos</option>
+            <option value="25" selected>25 pontos</option>
+            <option value="30">30 pontos</option>
+            <option value="custom">Personalizado</option>
+          </select>
+
+          <input id="pontosSetCustom" class="hidden" type="number" min="1" max="100" placeholder="Digite a quantidade de pontos">
+
+          <div id="boxTieBreak">
+            <label for="pontosTieBreak">Pontos do tie-break</label>
+            <select id="pontosTieBreak">
+              <option value="15" selected>15 pontos</option>
+              <option value="21">21 pontos</option>
+              <option value="custom">Personalizado</option>
+            </select>
+            <input id="pontosTieBreakCustom" class="hidden" type="number" min="1" max="100" placeholder="Pontos do tie-break">
+          </div>
+        </div>
+
+        <button id="btnAvancarFormato" class="full">Avançar</button>
+      </div>
+    </section>
+
+    <section id="telaFormato" class="screen">
+      <div class="step-header"><span>Etapa 6 de 7</span><h2>Formato da competição</h2><p>Escolha como o campeonato será disputado.</p></div>
+      <div class="format-options">
+        <button class="format-card" data-formato="grupos">
+          <span>📊</span>
+          <div><strong>Grupos + eliminatórias</strong><small>Fase de grupos seguida de mata-mata.</small></div>
+        </button>
+        <button class="format-card" data-formato="eliminatoria">
+          <span>🏆</span>
+          <div><strong>Eliminatórias</strong><small>Confrontos diretos até a final.</small></div>
+        </button>
+      </div>
+
+      <button id="btnConfirmarEliminatoria" class="full hidden">Avançar</button>
+
+      <div id="configGrupos" class="card hidden">
+        <label for="quantidadeGrupos">Quantidade de grupos</label>
+        <select id="quantidadeGrupos">
+          <option value="1">1 grupo</option>
+          <option value="2">2 grupos</option>
+          <option value="3">3 grupos</option>
+          <option value="4">4 grupos</option>
+          <option value="5">5 grupos</option>
+        </select>
+        <p id="explicacaoGrupos" class="helper"></p>
+        <label for="regraClassificacao">Quem avança?</label>
+        <select id="regraClassificacao"></select>
+        <div id="detalhesRegraClassificacao" class="rule-details"></div>
+        <label class="qualifier-checkbox" for="incluirQualificatorias">
+          <input id="incluirQualificatorias" type="checkbox">
+          <span>Incluir fase de Qualificatórias</span>
+        </label>
+        <button id="btnConfirmarFormato" class="full">Avançar</button>
+      </div>
+    </section>
+
+
+    <section id="telaSelecaoQualificatorias" class="screen">
+      <div class="step-header">
+        <span>Qualificatórias</span>
+        <h2>Selecione os times que jogarão as Qualificatórias</h2>
+        <p>Marque os times que participarão desta fase.</p>
+      </div>
+
+      <div id="listaTimesQualificatorias" class="qualifier-team-list"></div>
+
+      <button id="btnAvancarSelecaoQualificatorias" class="full">Avançar</button>
+      <button id="btnVoltarSelecaoQualificatorias" class="secondary full">Voltar</button>
+    </section>
+
+    <section id="telaRevisao" class="screen">
+      <div class="step-header"><span>Etapa 7 de 7</span><h2>Revisar campeonato</h2><p>Confira os dados antes de criar.</p></div>
+      <div id="resumoCampeonato" class="card"></div>
+      <div id="previewEstrutura" class="stack"></div>
+      <button id="btnSalvarCampeonato" class="full">Criar campeonato</button>
+      <button id="btnRefazerSorteio" class="secondary full">Refazer sorteio</button>
+    </section>
+
+    <section id="telaListaAluno" class="screen">
+      <div class="step-header"><span id="alunoTurnoLabel">Turno</span><h2>Competições</h2><p>Escolha uma competição.</p></div>
+      <div id="listaCampeonatosAluno" class="stack"></div>
+    </section>
+
+    <section id="telaCompeticaoAluno" class="screen">
+      <div class="card">
+        <h2 id="tituloCompeticaoAluno">Campeonato</h2>
+        <p id="subCompeticaoAluno" class="muted"></p>
+        <div id="statusCompeticao" class="status-badge"></div>
+      </div>
+
+      <div id="acoesAdminCompeticao" class="admin-toolbar hidden">
+        <button id="btnEditarCompeticao" class="secondary">✏️ Editar</button>
+        <button id="btnRegenerarCompeticao" class="ghost">🔀 Reorganizar</button>
+        <button id="btnFinalizar" class="teacher">Finalizar campeonato</button>
+        <button id="btnReabrir" class="ghost hidden">Reabrir</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" id="tabProximos" data-tab="proximos">Jogos</button>
+        <button class="tab" id="tabResultados" data-tab="resultados">Resultados</button>
+        <button class="tab" id="tabQualificatorias" data-tab="qualificatorias">Qualificatórias</button>
+        <button class="tab" id="tabClassificacao" data-tab="classificacao">Fase de grupos</button>
+        <button class="tab" id="tabEliminatorias" data-tab="eliminatorias">Eliminatórias</button>
+        <button class="tab" id="tabArtilheiros" data-tab="artilheiros">Artilheiros</button>
+        <button class="tab" id="tabPodio" data-tab="podio">Pódio</button>
+        <button class="tab" id="tabResumoFinal" data-tab="resumoFinal">Resumo final</button>
+      </div>
+      <div id="criterioClassificacao" class="classification-note hidden"></div>
+      <div id="conteudoAluno" class="stack"></div>
+    </section>
+
+
+    <section id="telaEditarCompeticao" class="screen">
+      <div class="step-header">
+        <span>Edição completa</span>
+        <h2>Editar campeonato</h2>
+        <p>Alterações simples não apagam resultados. Mudanças estruturais podem exigir novo sorteio.</p>
+      </div>
+
+      <div class="card">
+        <label for="editarTurno">Turno</label>
+        <select id="editarTurno">
+          <option>Matutino</option>
+          <option>Vespertino</option>
+          <option>Noturno</option>
+          <option>Outro</option>
+        </select>
+
+        <label for="editarEsporte">Esporte</label>
+        <input id="editarEsporte" maxlength="60">
+
+        <label for="editarModalidade">Modalidade</label>
+        <select id="editarModalidade">
+          <option>Misto</option>
+          <option>Masculino</option>
+          <option>Feminino</option>
+        </select>
+
+        <button id="btnSalvarDadosBasicos" class="full">Salvar dados básicos</button>
+      </div>
+
+      <div class="grid">
+        <button id="btnEditarParticipantes" class="choice-card"><span>👥</span><strong>Times e jogadores</strong><small>Adicionar, editar ou excluir</small></button>
+        <button id="btnEditarRegras" class="choice-card"><span>📋</span><strong>Regras da partida</strong><small>Pontos, sets e pontuação</small></button>
+        <button id="btnEditarFormato" class="choice-card"><span>🏆</span><strong>Formato</strong><small>Grupos e eliminatórias</small></button>
+      </div>
+    </section>
+
+
+    <section id="telaConfiguracoes" class="screen">
+      <div class="step-header">
+        <span>Configurações</span>
+        <h2>Escola e segurança</h2>
+        <p>Gerencie validade, senha e visibilidade da escola.</p>
+      </div>
+
+      <div class="card">
+        <h3 id="configNomeEscola">Escola</h3>
+        <p id="configValidade" class="muted"></p>
+
+        <label for="novaSenhaEscola">Nova senha administrativa</label>
+        <input id="novaSenhaEscola" type="password" minlength="6" placeholder="Deixe vazio para manter">
+
+        <label for="confirmarNovaSenha">Confirmar nova senha</label>
+        <input id="confirmarNovaSenha" type="password" minlength="6" placeholder="Repita a nova senha">
+
+        <button id="btnSalvarNovaSenha" class="full">Atualizar senha</button>
+        <button id="btnRenovarValidade" class="secondary full">Renovar por mais 60 dias</button>
+        <button id="btnDesativarEscola" class="danger full">Desativar escola</button>
+      </div>
+    </section>
+
+    <section id="telaAgenda" class="screen">
+      <div class="step-header">
+        <span>Agenda automática</span>
+        <h2>Organizar os jogos</h2>
+        <p>Distribua as partidas automaticamente e depois ajuste qualquer jogo individualmente.</p>
+      </div>
+
+      <div class="card">
+        <label for="agendaDataInicial">Primeiro dia</label>
+        <input id="agendaDataInicial" type="date">
+
+        <div class="schedule-grid hidden">
+          <div>
+            <label for="agendaHoraInicial">Início</label>
+            <input id="agendaHoraInicial" type="time" value="08:00">
+          </div>
+          <div>
+            <label for="agendaHoraFinal">Fim do dia</label>
+            <input id="agendaHoraFinal" type="time" value="18:00">
+          </div>
+        </div>
+
+        <label for="agendaIntervalo">Duração/intervalo por jogo (minutos)</label>
+        <input id="agendaIntervalo" type="number" min="5" max="240" value="30">
+
+        <label for="agendaLocais">Quadras ou locais disponíveis</label>
+        <textarea id="agendaLocais" rows="4" placeholder="Um por linha&#10;Quadra principal&#10;Quadra 2"></textarea>
+
+        <label class="checkbox-row">
+          <input id="agendaApenasVazios" type="checkbox" checked>
+          Preencher apenas jogos sem data
+        </label>
+
+        <button id="btnGerarAgenda" class="full">Gerar agenda</button>
+      </div>
+
+      <div id="previewAgenda" class="stack"></div>
+    </section>
+
+    <section id="telaResultado" class="screen">
+      <div class="step-header"><span>Jogo</span><h2 id="tituloJogoResultado">Registrar resultado</h2><p>Informe o placar da partida.</p></div>
+      <div class="card result-editor-card">
+        <button id="btnMostrarDetalhesJogo" class="ghost full result-details-toggle">
+          ＋ Adicionar data, horário ou local
+        </button>
+
+        <div id="detalhesJogoBox" class="schedule-grid compact-schedule hidden">
+          <div><label for="dataJogo">Data</label><input id="dataJogo" type="date"></div>
+          <div><label for="horaJogo">Horário</label><input id="horaJogo" type="time"></div>
+          <div class="full-col"><label for="localJogo">Local</label><input id="localJogo" placeholder="Ex.: Quadra principal"></div>
+        </div>
+
+        <button id="btnInverterLados" class="ghost full swap-sides-btn">⇄ Inverter lados da tela</button>
+
+        <div id="placarSimplesBox">
+          <div class="mobile-score-board">
+            <div class="mobile-score-side">
+              <strong id="timeCasaNome" class="mobile-score-team">Casa</strong>
+              <div class="score-control compact-score">
+                <button id="menosCasa" class="ghost">−</button>
+                <input id="placarCasa" type="number" min="0" value="0">
+                <button id="maisCasa">＋</button>
+              </div>
+            </div>
+
+            <span class="mobile-score-x">×</span>
+
+            <div class="mobile-score-side">
+              <strong id="timeForaNome" class="mobile-score-team">Fora</strong>
+              <div class="score-control compact-score">
+                <button id="menosFora" class="ghost">−</button>
+                <input id="placarFora" type="number" min="0" value="0">
+                <button id="maisFora">＋</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="placarSetsBox" class="hidden">
+          <div id="listaSets" class="stack"></div>
+          <button id="btnAdicionarSet" class="secondary full">＋ Adicionar set</button>
+        </div>
+
+        <div id="penaltisBox" class="card penalty-box hidden">
+          <h3>Decisão por pênaltis</h3>
+          <p class="muted">A partida eliminatória terminou empatada. Informe o vencedor da disputa por pênaltis.</p>
+          <label for="vencedorPenaltis">Vencedor dos pênaltis</label>
+          <select id="vencedorPenaltis"><option value="">Selecione</option></select>
+          <div class="cards-grid">
+            <div><label id="labelPenaltisCasa" for="penaltisCasa">Casa</label><input id="penaltisCasa" type="number" min="0" value="0"></div>
+            <div><label id="labelPenaltisFora" for="penaltisFora">Visitante</label><input id="penaltisFora" type="number" min="0" value="0"></div>
+          </div>
+        </div>
+
+        <label for="situacaoJogo">Situação</label>
+        <select id="situacaoJogo">
+          <option value="normal">Resultado normal</option>
+          <option value="woCasa">W.O. para o time da casa</option>
+          <option value="woFora">W.O. para o time visitante</option>
+          <option value="woDuplo">Nenhum time compareceu</option>
+          <option value="adiado">Jogo adiado</option>
+          <option value="cancelado">Jogo cancelado</option>
+        </select>
+
+        <div id="golsFutsalBox" class="hidden">
+          <h3>Autores dos gols</h3>
+          <p class="muted">Opcional. Escolha o jogador, “Não informar” ou “Gol contra”.</p>
+          <div id="golsFutsal"></div>
+        </div>
+
+
+        <div id="previewClassificacaoJogo" class="classification-preview hidden"></div>
+
+        <button id="btnSalvarResultado" class="full">Salvar jogo</button>
+        <button id="btnLimparResultado" class="danger full">Apagar resultado</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="modalQREscola" class="modal-backdrop hidden">
+    <div class="modal-card qr-school-modal">
+      <button id="btnFecharQREscola" class="modal-close" aria-label="Fechar">×</button>
+      <span class="qr-modal-icon">🏆</span>
+      <h2>Jogos Interclasse</h2>
+      <h3 id="qrNomeEscola">Nome da escola</h3>
+      <p>Escaneie para acompanhar jogos, resultados e classificações.</p>
+      <div id="qrcode" class="qr-box"></div>
+      <div class="qr-modal-actions">
+        <button id="btnCopiarLink" class="secondary">Copiar link</button>
+        <button id="btnBaixarQR" class="teacher">Baixar cartaz</button>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  <div id="modalReorganizar" class="modal-backdrop hidden">
+    <div class="modal-card reorganizer-modal">
+      <button id="btnFecharReorganizar" class="modal-close" aria-label="Fechar">×</button>
+      <div class="reorganizer-heading">
+        <span>🔀</span>
+        <div>
+          <h2>Reorganizar campeonato</h2>
+          <p>Segure e arraste os itens, como em uma playlist.</p>
+        </div>
+      </div>
+
+      <div class="reorganizer-tabs">
+        <button class="reorganizer-tab" data-reorder-tab="qualificatorias">Qualificatórias</button>
+        <button class="reorganizer-tab active" data-reorder-tab="grupos">Grupos</button>
+        <button class="reorganizer-tab" data-reorder-tab="ordem">Ordem dos jogos</button>
+        <button class="reorganizer-tab" data-reorder-tab="chave">Eliminatórias</button>
+      </div>
+
+      <div id="reorganizarConteudo" class="reorganizer-content"></div>
+
+      <div class="reorganizer-footer">
+        <button id="btnRefazerSorteioCompleto" class="ghost">🎲 Refazer sorteio completo</button>
+        <button id="btnSalvarReorganizacao" class="teacher">Salvar reorganização</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+  <div id="loading" class="loading hidden"><div class="spinner"></div><span>Carregando...</span></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+    <script type="module" src="./app.js"></script>
